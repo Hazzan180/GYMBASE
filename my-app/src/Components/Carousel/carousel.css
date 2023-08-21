@@ -1,0 +1,16 @@
+.carousel-wrapper {
+    height: fit-content;
+    overflow: hidden;
+    place-items: center;
+    margin-top: 20px;
+}
+  
+.carousel-item-container {
+    overflow: auto;
+    white-space: nowrap;
+    scroll-snap-type: x proximity;
+}
+.carousel-item-container::-webkit-scrollbar {
+    display: none;
+}
+  
