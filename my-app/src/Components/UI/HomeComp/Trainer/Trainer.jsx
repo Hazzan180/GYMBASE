@@ -5,21 +5,23 @@ import './trainer.css'
 import Carousel from '../../../Carousel/Carousel'
 
 //improt Card
-import Card from '../../../Card/Card'
+import {Card} from '../../../Card/Card'
 
 //import trainer data
 import Trainers from '../../../../Data'
+import BodyPart from '../../ExerciseCom/BodyPart'
 
 
 const Trainer = () => {
   const [team, setTeam] = useState(Trainers)
-
+  const [selectedCategory, setSelectedCategory] = useState('all');
   
     const handulCategory = (category) => {
       const upDateCategory = Trainers.filter((item) => {
         return item.category === category
       })
   
+      setSelectedCategory(category);
       setTeam(upDateCategory);
     }
 
@@ -27,11 +29,12 @@ const Trainer = () => {
    <>
     <section className='section-p1'>
       <h2 className='text-center font-Raleway text-[20px] text-[#000] font-bold'>TRAIN WITH EXPERTS</h2>
-      <h1 className='text-center font-Raleway text-[40px] text-[#409915] font-bold'>OUR TEAM</h1>
+      <h1 className='text-center font-Raleway text-[40px] max-sm:text-[30px] text-[#409915] font-bold'>OUR TEAM</h1>
 
     <Carousel>
     <div className='flex justify-center max-sm:justify-start gap-[20px]'>
       <button
+        style={{backgroundColor: selectedCategory === 'all' ? '#409915' : ''}}
         onClick={() => setTeam(Trainers)}
         type="button"
         className="inline-block rounded border-[1px] border-[#000] px-6 pb-[6px] pt-2 text-xs font-Raleway uppercase 
@@ -41,6 +44,7 @@ const Trainer = () => {
           All
       </button>
       <button
+        style={{backgroundColor: selectedCategory === 'bodycombat' ? '#409915' : ''}}
         onClick={() => handulCategory('bodycombat')}
         type="button"
         className="inline-block rounded border-[1px] border-[#000] px-6 pb-[6px] pt-2 text-xs font-Raleway uppercase 
@@ -50,6 +54,7 @@ const Trainer = () => {
           Body combat
       </button>
       <button
+        style={{backgroundColor: selectedCategory === 'bodyattack' ? '#409915' : ''}}
         onClick={() => handulCategory('bodyattack')}
         type="button"
         className="inline-block rounded border-[1px] border-[#000] px-6 pb-[6px] pt-2 text-xs font-Raleway uppercase 
@@ -59,6 +64,7 @@ const Trainer = () => {
           Body attack
       </button>
       <button
+        style={{backgroundColor: selectedCategory === 'box' ? '#409915' : ''}}
         onClick={() => handulCategory('box')}
         type="button"
         className="inline-block rounded border-[1px] border-[#000] px-6 pb-[6px] pt-2 text-xs font-Raleway uppercase 
@@ -68,6 +74,7 @@ const Trainer = () => {
           boxing
       </button>
       <button
+        style={{backgroundColor: selectedCategory === 'yoga' ? '#409915' : ''}}
         onClick={() => handulCategory('yoga')}
         type="button"
         className="inline-block rounded border-[1px] border-[#000] px-6 pb-[6px] pt-2 text-xs font-Raleway uppercase 
@@ -77,6 +84,7 @@ const Trainer = () => {
           yoga
       </button>
       <button
+        style={{backgroundColor: selectedCategory === 'zumba' ? '#409915' : ''}}
         onClick={() => handulCategory('zumba')}
         type="button"
         className="inline-block rounded border-[1px] border-[#000] px-6 pb-[6px] pt-2 text-xs font-Raleway uppercase 

@@ -7,7 +7,7 @@ const About = () => {
     <section>
       <Banner  title={'About Us'}/>
       <section className='section-p1 mt-[50px] bg-[#f0f0f0]'>
-        <h1 className='text-[50px] mb-5 uppercase font-Raleway font-bold text-[#000]'>WHO WE ARE</h1>
+        <h1 className='text-[50px] max-sm:text-[30px] mb-5 uppercase font-Raleway font-bold text-[#000]'>WHO WE ARE</h1>
         <p className='text-[gray] font-Raleway text-[18px]'>
         We are an independent gym that is committed to working with you to gain the results you want. Whether your aim is to loose weight, tone up, build bulk or gain weight we can put together a gym programme or recommend the right classes for you to attend in our studios.
         Our members benefit from a free gym programme and review every month, free studio classes and price reductions on our personal training sessions. As a member you can also access our pool and tennis courts for free and have priority for booking any of the pre-book activities, classes or sessions that we run.

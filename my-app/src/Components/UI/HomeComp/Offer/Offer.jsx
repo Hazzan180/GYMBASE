@@ -29,7 +29,7 @@ const serviceData = [
 const Offer = () => {
   return (
     <section className='offer'>
-     <h1 data-aos="fade-down" data-aos-duration="1000" className='font-Raleway text-[50px] text-[#409915] font-bold'>WHAT WE OFFER</h1>
+     <h1 data-aos="fade-down" data-aos-duration="1000" className='font-Raleway max-sm:text-[30px] text-[50px] text-[#409915] font-bold'>WHAT WE OFFER</h1>
 
      <div className='feature'>
         <div className='feature-box section-p1'>
