@@ -1,11 +1,14 @@
 import React,{useEffect, useState} from 'react'
 import {ExercisesCard} from '../../Card/Card'
-
+import ReactPaginate from 'react-paginate'
 
 import {fetchData, exerciseOptions} from '../../../Utils/FetchFromAPI'
 
+import '../../../Styles/exercises.css'
+
 const Exercises = ({exercises, setExercises, bodypart}) => { 
     const [loading, setLoading] = useState(true);
+    const [pageNumber, setPageNumber] = useState(0);
 
     useEffect(() => {
         const fetchExercisesData = async () => {
@@ -27,6 +30,19 @@ const Exercises = ({exercises, setExercises, bodypart}) => {
     
         fetchExercisesData();
     }, [bodypart]);
+
+    const exercisePerPage = 12
+    const pagesVisited = pageNumber * exercisePerPage
+
+    const displayExercises = exercises.slice(pagesVisited, pagesVisited + exercisePerPage)
+
+    const pageCount = Math.ceil(exercises.length / exercisePerPage)
+
+    const changePage = ({selected}) => {
+        setPageNumber(selected)
+        window.scrollTo({ top: 350, left: 100, behavior: 'smooth' });
+    }
+
   return (
     <section className='section-p1'>
         <h2 className='text-left font-Raleway text-[40px] max-sm:text-[30px] text-[#409915] font-bold'>Showing result</h2>
@@ -43,7 +59,7 @@ const Exercises = ({exercises, setExercises, bodypart}) => {
                         </div>
                         ) : (
                         <div  className="p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-5">
-                            {exercises.map((item) => (
+                            {displayExercises.map((item) => (
                             <ExercisesCard exerciseID={item} key={item.id}/>
                            ))}
                         </div>
@@ -51,6 +67,19 @@ const Exercises = ({exercises, setExercises, bodypart}) => {
                     </div>
                 </div>
             )}
+        <ReactPaginate
+         previousLabel={"Previous"}
+         nextLabel={"Next"}
+         pageCount={pageCount}
+         onPageChange={changePage}
+         containerClassName={"paginationBttns"}
+         previousLinkClassName={"previousBttn"}
+         nextLinkClassName={"nextBttn"}
+         disabledClassName={"paginationDisabled"}
+         activeClassName={"paginationActive"}
+         pageRangeDisplayed={1}
+         marginPagesDisplayed={0}
+        />
     </section>
   )
 }
