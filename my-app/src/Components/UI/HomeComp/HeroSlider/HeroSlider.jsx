@@ -9,14 +9,6 @@ import 'swiper/css/navigation';
 
 import './heroSlider.css';
 
-import slider1 from '../../../../assets/images/slider1.jpg'
-import slider2 from '../../../../assets/images/slider7.jpg'
-import slider3 from '../../../../assets/images/slider6.jpg'
-import slider4 from '../../../../assets/images/slider9.jpg'
-import slider5 from '../../../../assets/images/slider2.jpg'
-
-
-
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 const HeroSlider = () => {
@@ -43,31 +35,31 @@ const HeroSlider = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src={slider1} alt='slider1' />
+          <img src='https://shorturl.at/ADNPR' alt='slider1' />
           <div className="text">
             <h2 className='text-[50px] font-Raleway font-bold text-[#fff]'>No Pain No Gain</h2>
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slider2} alt='slider2' />
+          <img src='https://shorturl.at/bhtJS' alt='slider2' />
           <div className="text">
             <h2 className='text-[50px] font-Raleway font-bold text-[#fff]'>Turn Fat To Fitness</h2>
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slider3} alt='slider3' />
+          <img src='https://shorturl.at/flHZ9' alt='slider3' />
           <div className="text">
             <h2 className='text-[50px] font-Raleway font-bold text-[#fff]'>Keep Your Body Fit And Strong</h2>
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slider4} alt='slider4' />
+          <img src='https://shorturl.at/jnuMQ' alt='slider4' />
           <div className="text">
             <h2 className='text-[50px] font-Raleway font-bold text-[#fff]'>Build A Perfect Muscle</h2>
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slider5} alt='slider' />
+          <img src='https://shorturl.at/ituU5' alt='slider' />
           <div className="text">
             <h2 className='text-[50px] font-Raleway font-bold text-[#fff]'>Shape Your Body</h2>
           </div>
