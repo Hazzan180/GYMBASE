@@ -47,7 +47,7 @@ const Footer = () => {
           </ul>
       </div>
     </div>
-    <div className="px-4 py-6 bg-[#f0f0f0] text-center font-Raleway">
+    <div className="px-4 py-6 bg-[#fff] text-center font-Raleway">
         <span className="text-lg font-Raleway text-[#000]">©Copyright 2023 developed by <a href="https://github.com/Hazzan180">Hazzan180</a>. All Rights Reserved.
         </span> 
     </div>
