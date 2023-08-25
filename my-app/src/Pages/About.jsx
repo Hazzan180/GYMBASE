@@ -3,8 +3,11 @@ import Banner from '../Components/Banner/Banner'
 import {Link} from 'react-router-dom'
 import '../Components/UI/HomeComp/Offer/Offer.css'
 
+import Carousel from '../Components/Carousel/Carousel'
+
 const About = () => {
   return (
+    <>
     <section>
       <Banner  title={'About Us'}/>
       <section className='section-p1 offer'>
@@ -17,6 +20,7 @@ const About = () => {
         </p>
       </section>
     </section>
+    </>
   )
 }
 
