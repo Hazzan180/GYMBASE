@@ -1,10 +1,11 @@
 import React from 'react'
 import Banner from '../Components/Banner/Banner'
 import {Link} from 'react-router-dom'
+import Helment from '../Components/Helment/Helment'
 
 const About = () => {
   return (
-    <>
+    <Helment title={'About'}>
     <section>
       <Banner  title={'About Us'}/>
       <section className='section-p1 offer'>
@@ -17,7 +18,7 @@ const About = () => {
         </p>
       </section>
     </section>
-    </>
+    </Helment>
   )
 }
 

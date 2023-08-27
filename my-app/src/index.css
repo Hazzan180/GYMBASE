@@ -3,6 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+  user-select: none;
+}
 
 .section-p1 {
     padding: 40px 80px;
@@ -24,4 +27,15 @@
     .section-p1{
       padding: 20px;
     }
+}
+
+/* Change color of scrollbar */
+::-webkit-scrollbar
+{
+    width: 0.7rem;
+    background-color: #fff;
+}
+::-webkit-scrollbar-thumb
+{
+    background-color: #409915;
 }

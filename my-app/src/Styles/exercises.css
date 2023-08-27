@@ -1,8 +1,6 @@
 .paginationBttns {
     list-style: none;
     display: flex;
-    justify-content: right;
-    align-items: end;
     margin-top: 40px;
 }
   
