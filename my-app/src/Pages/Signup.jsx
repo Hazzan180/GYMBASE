@@ -16,7 +16,7 @@ const Signup = () => {
   return (
     <Helement title={'Signup'}>
     <section 
-    className='min-h-screen flex items-center justify-center mt-10' 
+    className='min-h-screen flex items-center justify-center' 
     style={{ backgroundImage: `url(${background})` }}
     >
       <div className='bg-[#fff] flex rounded-br-[20px]

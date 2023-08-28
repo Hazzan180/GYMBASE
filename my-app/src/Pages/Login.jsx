@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import background from '../assets/images/wave.jpeg'
 import Icon  from '../assets/images/google.svg'
 import {useNavigate} from 'react-router-dom'
@@ -15,7 +15,7 @@ const Login = () => {
   return (
     <Helement title={'Login'}>
     <section 
-    className='min-h-screen flex items-center justify-center mt-10' 
+    className='min-h-screen flex items-center justify-center' 
     style={{ backgroundImage: `url(${background})` }}
     >
       <div className='bg-[#fff] flex rounded-br-[20px]

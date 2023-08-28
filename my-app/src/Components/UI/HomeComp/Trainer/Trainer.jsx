@@ -9,13 +9,18 @@ import {Card} from '../../../Card/Card'
 
 //import trainer data
 import Trainers from '../../../../Data'
-import BodyPart from '../../ExerciseCom/BodyPart'
+//import BodyPart from '../../ExerciseCom/BodyPart'
 
 
 const Trainer = () => {
   const [team, setTeam] = useState(Trainers)
   const [selectedCategory, setSelectedCategory] = useState('all');
-  
+  const [height, setheight] = useState()
+  const [weight, setweight] = useState()
+  const [age, setAge] = useState()
+  const [sex, setSex] = useState()
+  const [factor, setFactor] = useState()
+
     const handulCategory = (category) => {
       const upDateCategory = Trainers.filter((item) => {
         return item.category === category
@@ -24,6 +29,38 @@ const Trainer = () => {
       setSelectedCategory(category);
       setTeam(upDateCategory);
     }
+
+    const SubmitValue = (e) => {
+      e.preventDefault();
+
+      const BMI = Math.round(weight / height / height * 10000)
+      
+      const BMR = sex === 'male' ? 66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age) : 
+      655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age)
+        
+     const ans = Math.round(BMR)
+     const formatted = ans.toLocaleString('en-Us')
+    
+     let calculatedCalories;
+
+     if (factor === 'little') {
+       calculatedCalories = BMR * 1.2;
+     } else if (factor === 'light') {
+       calculatedCalories = BMR * 1.375;
+     } else if (factor === 'moderate') {
+       calculatedCalories = BMR * 1.55;
+     } else if (factor === 'hard') {
+       calculatedCalories = BMR * 1.725;
+     }
+      const ansCa = Math.round(calculatedCalories)
+      const formattedCal = ansCa.toLocaleString('en-Us')
+
+      console.log(BMI)
+      console.log(formatted)
+      console.log(formattedCal);
+    }
+    
+    
 
   return (
    <>
@@ -140,7 +177,7 @@ const Trainer = () => {
           </tr>
         </tbody>
       </table>
-
+      <p  className='font-Raleway text-[gray] mt-5'>* BMR Metabolic Rate / BMI Body Mass index</p>
       </div>
 
       <div className='w-[50%] max-md:w-[100%] max-md:mt-5'>
@@ -154,22 +191,26 @@ const Trainer = () => {
         I recommend using the sedentary active and/or  lightly moderately 
         active options as a starting point.
       </p>
-      <form>
+      <form onSubmit={SubmitValue}>
         <div className='flex justify-between gap-10 mb-5'>
           <input type='text' placeholder='Height/cm' 
           className='w-[50%] placeholder-black outline-none bg-[#f0f0f0] py-3 px-3 '
+          onChange={(e) => setheight(e.target.value)} required
           />
           <input type='text' placeholder='Weight/kg' 
           className='w-[50%] placeholder-black outline-none bg-[#f0f0f0] py-3 px-3 '
+          onChange={(e) => setweight(e.target.value)} required
           />
         </div>
 
         <div className='flex justify-between gap-10 mb-5'>
-          <input type='text' placeholder='Height/cm' 
+          <input type='number' placeholder='Age in years' 
           className='w-[50%] placeholder-black outline-none bg-[#f0f0f0] py-3 px-3 '
+          onChange={(e) => setAge(e.target.value)} required
           />
          <select 
           className='w-[50%] outline-none bg-[#f0f0f0] py-3 px-3' defaultValue="none"
+          onChange={(e) => setSex(e.target.value)} required
          >
           <option value="none" disabled hidden>Sex</option>
           <option value='male'>Male</option>
@@ -178,7 +219,8 @@ const Trainer = () => {
         </div>
 
         <select 
-          className='w-[100%] outline-none bg-[#f0f0f0] py-3 px-3 mb-5' defaultValue="none"
+          className='w-[100%] outline-none bg-[#f0f0f0] py-3 px-3 mb-5' defaultValue="none" 
+          onChange={(e) => setFactor(e.target.value)} required
          >
           <option value="none" disabled hidden>Select an activity factor:</option>
           <option value='little'>Sedentary (little or no exercise)</option>
@@ -189,9 +231,11 @@ const Trainer = () => {
         <button className='font-Raleway rounded-full text-[#fff] bg-[#409915] hover:text-[#409915] hover:bg-white hover:border-2 py-2 px-7 '>calculate</button>
       </form>
       </div>
-
     </section>
-
+    <div className='flex justify-between w-full bg-[pink] py-5 px-5 mt-5'>
+        <h3>Please provide a valid height.</h3>
+        <h3>#</h3>
+    </div>
     </section>
    </>
   )
