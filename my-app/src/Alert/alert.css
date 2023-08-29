@@ -1,0 +1,14 @@
+.alert{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding: 15px;
+    color: #000;
+}
+
+.alert-danger{
+    background-color: pink;
+}
+.alert-success{
+    background-color: #f0f0f0;
+}

@@ -11,6 +11,7 @@ import {Card} from '../../../Card/Card'
 import Trainers from '../../../../Data'
 //import BodyPart from '../../ExerciseCom/BodyPart'
 
+import Alert from '../../../../Alert/Alert'
 
 const Trainer = () => {
   const [team, setTeam] = useState(Trainers)
@@ -20,6 +21,7 @@ const Trainer = () => {
   const [age, setAge] = useState()
   const [sex, setSex] = useState()
   const [factor, setFactor] = useState()
+  const [alert, setAlert] = useState({show:false})
 
     const handulCategory = (category) => {
       const upDateCategory = Trainers.filter((item) => {
@@ -30,16 +32,38 @@ const Trainer = () => {
       setTeam(upDateCategory);
     }
 
+    const handleAlert = ({type, text}) => {
+      setAlert({show:true, type, text})
+    }
+
     const SubmitValue = (e) => {
       e.preventDefault();
 
-      const BMI = Math.round(weight / height / height * 10000)
+
+      if (!height || !weight || !age || !sex || factor === 'none') {
+        handleAlert({type: 'danger', text: 'Please fill out all required fields before submitting.'})
+        return;
+      }
+
+      let BMI = weight / height / height * 10000
+      let BMIFixed = BMI.toFixed(2)
+      let status 
+
+      if(BMIFixed < 18.5){
+        status = 'YOU ARE UNDERWEIGHT!'
+      }else if(BMIFixed > 18.5 || BMIFixed === 24.9){
+        status = 'YOU ARE HEALTHY!'
+      }else if(BMIFixed > 25.0 || BMIFixed === 29.9){
+        status = 'YOU ARE OVERWEIGHT'
+      }else if(BMIFixed > 30.0){
+        status = 'YOU ARE OBESE'
+      }
       
-      const BMR = sex === 'male' ? 66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age) : 
-      655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age)
+      const BMR = sex === 'male' ? 66 + (13.7 * weight) + (5 * height) - (6.8 * age) : 
+      655 + (9.6 * weight) + (1.8 * height) - (4.7 * age)
+
         
-     const ans = Math.round(BMR)
-     const formatted = ans.toLocaleString('en-Us')
+     const BMRFixed = BMR.toFixed(1)
     
      let calculatedCalories;
 
@@ -52,15 +76,14 @@ const Trainer = () => {
      } else if (factor === 'hard') {
        calculatedCalories = BMR * 1.725;
      }
-      const ansCa = Math.round(calculatedCalories)
-      const formattedCal = ansCa.toLocaleString('en-Us')
+    
+      let calculatedCaloriesFixed = calculatedCalories.toFixed(1)
+      
 
-      console.log(BMI)
-      console.log(formatted)
-      console.log(formattedCal);
+      handleAlert({type: 'success', text: `${status}  Your BMI is ${BMIFixed}.  BMR ${BMRFixed} kcal/day, and BMR w/Activity Factor  ${calculatedCaloriesFixed} kcal/day`})
+
     }
-    
-    
+        
 
   return (
    <>
@@ -195,22 +218,33 @@ const Trainer = () => {
         <div className='flex justify-between gap-10 mb-5'>
           <input type='text' placeholder='Height/cm' 
           className='w-[50%] placeholder-black outline-none bg-[#f0f0f0] py-3 px-3 '
-          onChange={(e) => setheight(e.target.value)} required
+          onChange={(e) => setheight(e.target.value)} 
+          onKeyPress={(e) => {
+            if (!/[0-9.]/.test(e.key)) {
+              e.preventDefault();
+            }
+          }}
           />
           <input type='text' placeholder='Weight/kg' 
           className='w-[50%] placeholder-black outline-none bg-[#f0f0f0] py-3 px-3 '
-          onChange={(e) => setweight(e.target.value)} required
+          onChange={(e) => setweight(e.target.value)} 
+          onKeyPress={(e) => {
+            if (!/[0-9.]/.test(e.key)) {
+              e.preventDefault();
+            }
+          }}
           />
         </div>
 
         <div className='flex justify-between gap-10 mb-5'>
           <input type='number' placeholder='Age in years' 
           className='w-[50%] placeholder-black outline-none bg-[#f0f0f0] py-3 px-3 '
-          onChange={(e) => setAge(e.target.value)} required
+          onChange={(e) => setAge(e.target.value)} 
+          
           />
          <select 
           className='w-[50%] outline-none bg-[#f0f0f0] py-3 px-3' defaultValue="none"
-          onChange={(e) => setSex(e.target.value)} required
+          onChange={(e) => setSex(e.target.value)} 
          >
           <option value="none" disabled hidden>Sex</option>
           <option value='male'>Male</option>
@@ -232,10 +266,11 @@ const Trainer = () => {
       </form>
       </div>
     </section>
-    <div className='flex justify-between w-full bg-[pink] py-5 px-5 mt-5'>
-        <h3>Please provide a valid height.</h3>
-        <h3>#</h3>
-    </div>
+
+    {
+      alert.show && <Alert type={alert.type} text={alert.text} setAlert={setAlert} alert={alert}/>
+    }
+  
     </section>
    </>
   )
