@@ -11,7 +11,7 @@ const Alert = ({type, text, setAlert, alert}) => {
     <div className={`alert alert-${type}`} >
       <h3>{text}</h3>
       {
-        alert.show && <MdClose className='text-[40px] text-[#409915]' onClick={handuleClose}/> 
+        alert.show && <MdClose className='text-[30px] cursor-pointer text-[#409915]' onClick={handuleClose}/> 
       }
       
     </div>

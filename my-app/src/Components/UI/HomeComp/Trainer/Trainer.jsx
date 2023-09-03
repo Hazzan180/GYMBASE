@@ -11,7 +11,7 @@ import {Card} from '../../../Card/Card'
 import Trainers from '../../../../Data'
 //import BodyPart from '../../ExerciseCom/BodyPart'
 
-import Alert from '../../../../Alert/Alert'
+import Alert from '../../../Alert/Alert'
 
 const Trainer = () => {
   const [team, setTeam] = useState(Trainers)
