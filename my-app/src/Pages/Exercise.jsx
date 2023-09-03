@@ -8,10 +8,7 @@ import Helment from '../Components/Helment/Helment'
 const Exercise = () => {
   const [exercises, setExercises] = useState([]);
   const [bodypart, setBodyPart] = useState('all');
-  
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [exercises])
+
 
   return (
     <Helment title={'Exercise'}>
