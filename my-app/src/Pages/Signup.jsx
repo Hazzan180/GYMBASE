@@ -82,7 +82,7 @@ const Signup = () => {
     try {
       await gogleSignIn()
       toast.success('Logged in successfully');
-      navigate('/cart');
+      navigate('/exercise');
       // Redirect to your desired page after successful signup
     } catch (err) {
       toast.error(err.message);
