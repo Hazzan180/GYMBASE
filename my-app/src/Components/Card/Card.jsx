@@ -81,9 +81,9 @@ export const VideoCard = ({img, name, title}) => {
 export const SimilarCard = ({exerciseID}) => {
     const { id, bodyPart, equipment, gifUrl, name, target } = exerciseID;
     return (
-      <Link to={`/exercise/${id}`}>
-         <div className="rounded overflow-hidden shadow-lg flex-shrink-0 m-2">
-        <motion.img
+        <div className="rounded overflow-hidden shadow-lg flex-shrink-0 m-2">
+          <Link to={`/exercise/${id}`}>
+          <motion.img
           whileHover={{ scale: 0.9 }}
           className="w-[100%] h-[50vh]"
           src={gifUrl}
@@ -104,8 +104,7 @@ export const SimilarCard = ({exerciseID}) => {
             Equipment: {equipment}
           </span>
         </div>
+          </Link>
         </div>
-      </Link>
-
     );
 }
