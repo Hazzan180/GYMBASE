@@ -35,35 +35,30 @@ const HeroSlider = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src='https://shorturl.at/ADNPR' alt='slider1' />
+          <img src='https://rb.gy/ici8y' alt='slider1' />
           <div className="text">
             <h2 className='text-[50px] font-Raleway font-bold text-[#fff]'>No Pain No Gain</h2>
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src='https://shorturl.at/bhtJS' alt='slider2' />
+          <img src='https://tinyurl.com/5efrthpc' alt='slider2' />
           <div className="text">
             <h2 className='text-[50px] font-Raleway font-bold text-[#fff]'>Turn Fat To Fitness</h2>
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src='https://shorturl.at/flHZ9' alt='slider3' />
+          <img src='https://rb.gy/cvwhi' alt='slider3' />
           <div className="text">
             <h2 className='text-[50px] font-Raleway font-bold text-[#fff]'>Keep Your Body Fit And Strong</h2>
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src='https://shorturl.at/jnuMQ' alt='slider4' />
+          <img src='https://rb.gy/np2g6' alt='slider4' />
           <div className="text">
             <h2 className='text-[50px] font-Raleway font-bold text-[#fff]'>Build A Perfect Muscle</h2>
           </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <img src='https://shorturl.at/ituU5' alt='slider' />
-          <div className="text">
-            <h2 className='text-[50px] font-Raleway font-bold text-[#fff]'>Shape Your Body</h2>
-          </div>
-        </SwiperSlide>
+       
         
         <div className="autoplay-progress" slot="container-end" style={{color: '#fff'}}>
           <svg viewBox="0 0 48 48" ref={progressCircle} >
